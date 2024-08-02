@@ -1,1 +1,1 @@
-Algoritmos de ordenação merge sort, bubble sort e insertion sort implementados em python com geração de listas aleatórias desenvolvido durante a disciplina de Estatística Aplicada a Informática no segundo período (2024.1) de Engenharia de Softeare na Universidade do Estado do Pará.
+Algoritmos de ordenação merge sort, bubble sort e insertion sort implementados em python com geração de listas aleatórias desenvolvido durante a disciplina de Estatística Aplicada a Informática no segundo período (2024.1) de Engenharia de Software na Universidade do Estado do Pará.
