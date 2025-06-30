@@ -3,7 +3,7 @@
 ## Desenvolvimento
 
 Este repositório foi iniciado como trabalho prático da disciplina **Estatística Aplicada à Informática** (2º semestre/2024) do Bacharelado em Engenharia de Software — Universidade do Estado do Pará (UEPA).  
-Em 2025 ele foi expandido e refinado para a palestra **“Análise de Complexidade e Algoritmos de Ordenação em Python: Big O na Prática”**, apresentada no **Python Norte** (julho/2025), ganhando:
+Em 2025 foi expandido e aprimorado para a palestra **“Análise de Complexidade e Algoritmos de Ordenação em Python: Big O na Prática”**, apresentada no **Python Norte** (julho/2025), ganhando:
 
 * interface 100 % interativa (CLI) para escolher algoritmos e parâmetros;  
 * coleta de tempos médios com múltiplas repetições;  
