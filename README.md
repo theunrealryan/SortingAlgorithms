@@ -47,12 +47,12 @@ pip install numpy matplotlib
 
 ---
 
-## Executando **e interagindo** com `big_o_compare.py`
+## Executando **e interagindo** com `merge-insertion-bubble.py`
 
 ### 1. Inicie o script
 
 ```bash
-python big_o_compare.py
+python merge-insertion-bubble.py
 ```
 
 ### 2. Escolha os algoritmos
