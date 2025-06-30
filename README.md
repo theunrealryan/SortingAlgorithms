@@ -2,13 +2,24 @@
 
 ## Desenvolvimento
 
-Este repositório nasceu como trabalho prático da disciplina **Estatística Aplicada à Informática** (2º semestre/2024) do Bacharelado em Engenharia de Software — Universidade do Estado do Pará (UEPA).  
+Este repositório foi iniciado como trabalho prático da disciplina **Estatística Aplicada à Informática** (2º semestre/2024) do Bacharelado em Engenharia de Software — Universidade do Estado do Pará (UEPA).  
 Em 2025 ele foi expandido e refinado para a palestra **“Análise de Complexidade e Algoritmos de Ordenação em Python: Big O na Prática”**, apresentada no **Python Norte** (julho/2025), ganhando:
 
 * interface 100 % interativa (CLI) para escolher algoritmos e parâmetros;  
 * coleta de tempos médios com múltiplas repetições;  
 * gráficos empíricos × curvas teóricas ( _O(n log n)_ , _O(n²)_ , _n·n!_ …);  
 * comparativo especiail para o Bogosort de complexidade fatorial.
+
+---
+
+## Fundamentos teóricos
+
+* **Notação Big O** descreve limite assintótico superior de tempo ou espaço.
+* `O(n log n)` surge em algoritmos que dividem dados recursivamente e depois mesclam (caso do Merge Sort).
+* `O(n²)` caracteriza métodos baseados em comparação par-a-par — pivotando ou deslocando itens — em cada passo.
+* **Bogosort** exibe complexidade esperada `Θ(n · n!)` porque existem `n!` permutações possíveis e apenas uma está ordenada.
+
+Essas classes são traçadas nos gráficos para evidenciar quão bem (ou mal!) o comportamento empírico segue a teoria.
 
 ---
 
@@ -122,17 +133,6 @@ Uma janela se abre mostrando:
 | **Lista quase ordenada** | `Mín=1, Máx=10` + `tamanhos pequenos` | Perceba *Insertion Sort* em `O(n)` no melhor caso ([en.wikipedia.org][2]) |
 | **Stress Bubble**        | `tamanhos altos` (≥ 20 000)           | Observe crescimento quadrático tornar-se proibitivo                       |
 | **Bogosort isolado**     | `python bogo_benchmark.py`            | Compare picos individuais (n=10) vs. curva média `n · n!` em escala log   |
-
----
-
-## Fundamentos teóricos
-
-* **Notação Big O** descreve limite assintótico superior de tempo ou espaço ([en.wikipedia.org][4]).
-* `O(n log n)` surge em algoritmos que dividem dados recursivamente e depois mesclam (caso do Merge Sort) ([en.wikipedia.org][1]).
-* `O(n²)` caracteriza métodos baseados em comparação par-a-par — pivotando ou deslocando itens — em cada passo ([en.wikipedia.org][2], [en.wikipedia.org][3]).
-* **Bogosort** exibe complexidade esperada `Θ(n · n!)` porque existem `n!` permutações possíveis e apenas uma está ordenada ([en.wikipedia.org][5], [en.wikipedia.org][4]).
-
-Essas classes são traçadas no gráfico para evidenciar quão bem (ou mal!) o comportamento empírico segue a teoria.
 
 ---
 
