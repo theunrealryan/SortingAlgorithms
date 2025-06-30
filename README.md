@@ -8,7 +8,7 @@ Em 2025 ele foi expandido e refinado para a palestra **“Análise de Complexida
 * interface 100 % interativa (CLI) para escolher algoritmos e parâmetros;  
 * coleta de tempos médios com múltiplas repetições;  
 * gráficos empíricos × curvas teóricas ( _O(n log n)_ , _O(n²)_ , _n·n!_ …);  
-* comparativos especiais para o Bogosort ― nosso “mascote” de complexidade fatorial :contentReference[oaicite:0]{index=0}.
+* comparativo especiail para o Bogosort de complexidade fatorial.
 
 ---
 
@@ -16,10 +16,10 @@ Em 2025 ele foi expandido e refinado para a palestra **“Análise de Complexida
 
 | Algoritmo       | Classe Big O | Observações |
 |-----------------|--------------|-------------|
-| Merge Sort      | `O(n log n)` | estratégia dividir-e-conquistar; estável; bom para arquivos grandes :contentReference[oaicite:1]{index=1} |
-| Insertion Sort  | `O(n²)`      | excelente para listas quase ordenadas e pequeno _n_ :contentReference[oaicite:2]{index=2} |
-| Bubble Sort     | `O(n²)`      | simples, mas um dos mais lentos em caso médio :contentReference[oaicite:3]{index=3} |
-| **Bogosort**    | `Θ(n · n!)`  | embaralha até ordenar; usado apenas para demonstração de “código terrível” :contentReference[oaicite:4]{index=4} |
+| Merge Sort      | `O(n log n)` | estratégia dividir-e-conquistar; estável; bom para arquivos grandes |
+| Insertion Sort  | `O(n²)`      | excelente para listas quase ordenadas e pequeno _n_  |
+| Bubble Sort     | `O(n²)`      | simples, mas um dos mais lentos em caso médio |
+| **Bogosort**    | `Θ(n · n!)`  | embaralha até ordenar; usado apenas para demonstração de “código terrível” |
 
 ---
 
@@ -29,9 +29,9 @@ Em 2025 ele foi expandido e refinado para a palestra **“Análise de Complexida
 
 SortingAlgorithms/
 ├─ big\_o\_compare.py                # script interativo principal
-├─ bogo\_benchmark.py               # benchmark dedicado ao Bogosort
-├─ README.md                       # este arquivo
-└─ LICENSE                         # MIT
+├─ bogo\_benchmark.py                # benchmark dedicado ao Bogosort
+├─ README.md                         # este arquivo
+└─ LICENSE                           # MIT
 
 ````
 
@@ -111,8 +111,8 @@ Uma janela se abre mostrando:
 * **Linhas sólidas** – tempos empíricos por algoritmo.
 * **Linhas tracejadas** – curvas teóricas normalizadas:
 
-  * *Merge Sort* usa `n·log₂n` ([en.wikipedia.org][1]);
-  * *Insertion* e *Bubble* usam `n²` ([en.wikipedia.org][2], [en.wikipedia.org][3]).
+  * *Merge Sort* usa `n·log₂n`;
+  * *Insertion* e *Bubble* usam `n²`.
 
 > Os traços coincidem no último ponto para facilitar a leitura comparativa.
 
