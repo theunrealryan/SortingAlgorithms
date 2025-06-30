@@ -1,95 +1,142 @@
-````markdown
-## Projeto SortingAlgorithms
+# SortingAlgorithms
 
-Implementação em **Python** de três algoritmos clássicos de ordenação—**Merge Sort**, **Insertion Sort** e **Bubble Sort**—com geração de listas aleatórias para fins de avaliação empírica. O código foi desenvolvido originalmente durante a disciplina de **Estatística Aplicada à Informática** (2º semestre de 2024) no Bacharelado em Engenharia de Software da Universidade do Estado do Pará (UEPA) e posteriormente aprimorado para a palestra:
+## Desenvolvimento
 
-> **Análise de Complexidade e Algoritmos de Ordenação em Python: Big O na Prática**  
-> Python Norte · Julho de 2025 :contentReference[oaicite:0]{index=0}
+Este repositório nasceu como trabalho prático da disciplina **Estatística Aplicada à Informática** (2º semestre/2024) do Bacharelado em Engenharia de Software — Universidade do Estado do Pará (UEPA).  
+Em 2025 ele foi expandido e refinado para a palestra **“Análise de Complexidade e Algoritmos de Ordenação em Python: Big O na Prática”**, apresentada no **Python Norte** (julho/2025), ganhando:
 
----
-
-## 📂 Estrutura do Repositório
-
-- **README.md**  
-  Descrição do projeto e instruções de uso :contentReference[oaicite:1]{index=1}  
-- **algoritmos de ordenação merge sort, insertion sort, bubble sort.py**  
-  Script principal contendo:
-  - Geração de listas aleatórias  
-  - Implementações de Merge Sort, Insertion Sort e Bubble Sort  
-  - Medição de tempo de execução para diferentes tamanhos de entrada :contentReference[oaicite:2]{index=2}  
-
-**Linguagem:** Python (100%) :contentReference[oaicite:3]{index=3}  
-**Commits até o momento:** 4 :contentReference[oaicite:4]{index=4}  
-**Stars:** 1 :contentReference[oaicite:5]{index=5}  
+* interface 100 % interativa (CLI) para escolher algoritmos e parâmetros;  
+* coleta de tempos médios com múltiplas repetições;  
+* gráficos empíricos × curvas teóricas ( _O(n log n)_ , _O(n²)_ , _n·n!_ …);  
+* comparativos especiais para o Bogosort ― nosso “mascote” de complexidade fatorial :contentReference[oaicite:0]{index=0}.
 
 ---
 
-## 🚀 Funcionalidades Principais
+## Sobre o projeto
 
-1. **Geração de Listas Aleatórias**  
-   Parâmetros de tamanho, valor mínimo e valor máximo configuráveis pelo usuário.
-
-2. **Algoritmos de Ordenação**  
-   - **Merge Sort**: divisão e conquista, \(O(n\log n)\)  
-   - **Insertion Sort**: comparações e deslocamentos, \(O(n^2)\)  
-   - **Bubble Sort**: trocas sucessivas de pares, \(O(n^2)\)
-
-3. **Medição de Desempenho**  
-   Uso de `time.perf_counter()` para capturar o tempo médio de execução em várias repetições e diferentes tamanhos de entrada.
+| Algoritmo       | Classe Big O | Observações |
+|-----------------|--------------|-------------|
+| Merge Sort      | `O(n log n)` | estratégia dividir-e-conquistar; estável; bom para arquivos grandes :contentReference[oaicite:1]{index=1} |
+| Insertion Sort  | `O(n²)`      | excelente para listas quase ordenadas e pequeno _n_ :contentReference[oaicite:2]{index=2} |
+| Bubble Sort     | `O(n²)`      | simples, mas um dos mais lentos em caso médio :contentReference[oaicite:3]{index=3} |
+| **Bogosort**    | `Θ(n · n!)`  | embaralha até ordenar; usado apenas para demonstração de “código terrível” :contentReference[oaicite:4]{index=4} |
 
 ---
 
-## 💻 Como Executar
+## Estrutura
 
-1. Clone o repositório:
-   ```bash
-   git clone https://github.com/theunrealryan/SortingAlgorithms.git
-   cd SortingAlgorithms
+```
+
+SortingAlgorithms/
+├─ big\_o\_compare.py                # script interativo principal
+├─ bogo\_benchmark.py               # benchmark dedicado ao Bogosort
+├─ README.md                       # este arquivo
+└─ LICENSE                         # MIT
+
 ````
 
-2. (Opcional) Crie um ambiente virtual e ative-o:
+---
 
-   ```bash
-   python3 -m venv venv
-   source venv/bin/activate
-   ```
-3. Execute o script:
+## Instalação rápida
 
-   ```bash
-   python "merge-insertion-bubble.py"
-   ```
-4. Siga as instruções interativas para:
-
-   * Escolher algoritmo(s) a executar
-   * Definir tamanhos de lista, intervalo de valores
-   * Especificar número de repetições
+```bash
+git clone https://github.com/theunrealryan/SortingAlgorithms.git
+cd SortingAlgorithms
+python3 -m venv venv && source venv/bin/activate   # opcional
+pip install numpy matplotlib
+````
 
 ---
 
-## 📝 Evolução
+## Executando **e interagindo** com `big_o_compare.py`
 
-* **2024.1 (UEPA)**
-  Base acadêmica: estudo de estatística aplicada à comparação de algoritmos.
+### 1. Inicie o script
 
-* **2025.1 (Python Norte)**
-  Aprimoramentos para workshop:
+```bash
+python big_o_compare.py
+```
 
-  * Seleção interativa de algoritmos
-  * Plotagem de gráficos empíricos vs. curvas teóricas de Big O
-  * Estudos de caso com Bogosort e análise de picos de execução
+### 2. Escolha os algoritmos
+
+```
+Selecione algoritmos (Enter = todos):
+  1) Merge Sort
+  2) Insertion Sort
+  3) Bubble Sort
+Ex: 1,3 →
+```
+
+* **Enter vazio** roda **todos**.
+* `1,3` roda apenas Merge Sort e Bubble Sort.
+
+### 3. Defina os tamanhos de entrada
+
+```
+Tamanhos (ex: 1000,5000,10000):
+```
+
+Digite uma lista de *n*. O script aceita qualquer quantidade de valores inteiros; caso o formato falhe, usa `[1000, 5000, 10000]` como padrão.
+
+### 4. Configure o intervalo de valores
+
+```
+Mínimo elemento: 0
+Máximo elemento: 1000
+```
+
+Esses limites definem `random.randint(min,max)` para gerar cada elemento.
+
+### 5. Informe o número de repetições
+
+```
+Repetições: 5
+```
+
+Cada algoritmo será executado 5 × por tamanho de lista; usamos a média para reduzir variação estatística.
+
+### 6. Acompanhe o terminal
+
+```
+Medindo n = 5000...
+  Merge Sort    : 0.0123 s
+  Bubble Sort   : 1.0345 s
+```
+
+Para cada *n* você recebe o tempo médio já formatado.
+
+### 7. Analise o gráfico (Matplotlib)
+
+Uma janela se abre mostrando:
+
+* **Linhas sólidas** – tempos empíricos por algoritmo.
+* **Linhas tracejadas** – curvas teóricas normalizadas:
+
+  * *Merge Sort* usa `n·log₂n` ([en.wikipedia.org][1]);
+  * *Insertion* e *Bubble* usam `n²` ([en.wikipedia.org][2], [en.wikipedia.org][3]).
+
+> Os traços coincidem no último ponto para facilitar a leitura comparativa.
+
+### 8. Experimentos sugeridos
+
+| Experimento              | Configuração                          | Insight                                                                   |
+| ------------------------ | ------------------------------------- | ------------------------------------------------------------------------- |
+| **Lista quase ordenada** | `Mín=1, Máx=10` + `tamanhos pequenos` | Perceba *Insertion Sort* em `O(n)` no melhor caso ([en.wikipedia.org][2]) |
+| **Stress Bubble**        | `tamanhos altos` (≥ 20 000)           | Observe crescimento quadrático tornar-se proibitivo                       |
+| **Bogosort isolado**     | `python bogo_benchmark.py`            | Compare picos individuais (n=10) vs. curva média `n · n!` em escala log   |
 
 ---
 
-## 🤝 Contribuições
+## Fundamentos teóricos
 
-Pull requests são bem-vindos! Sugerimos:
+* **Notação Big O** descreve limite assintótico superior de tempo ou espaço ([en.wikipedia.org][4]).
+* `O(n log n)` surge em algoritmos que dividem dados recursivamente e depois mesclam (caso do Merge Sort) ([en.wikipedia.org][1]).
+* `O(n²)` caracteriza métodos baseados em comparação par-a-par — pivotando ou deslocando itens — em cada passo ([en.wikipedia.org][2], [en.wikipedia.org][3]).
+* **Bogosort** exibe complexidade esperada `Θ(n · n!)` porque existem `n!` permutações possíveis e apenas uma está ordenada ([en.wikipedia.org][5], [en.wikipedia.org][4]).
 
-* Adicionar novos algoritmos (QuickSort, HeapSort, etc.).
-* Melhorar visualizações gráficas.
-* Incluir testes automatizados e documentação adicional.
+Essas classes são traçadas no gráfico para evidenciar quão bem (ou mal!) o comportamento empírico segue a teoria.
 
 ---
 
-### Licença
+## Licença
 
-Este projeto está sob a **MIT License**. Veja o arquivo [LICENSE](LICENSE) para detalhes.
+Código sob **MIT License** — consulte o arquivo [`LICENSE`](LICENSE).
