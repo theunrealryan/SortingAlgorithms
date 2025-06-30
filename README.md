@@ -23,15 +23,14 @@ Em 2025 ele foi expandido e refinado para a palestra **“Análise de Complexida
 
 ---
 
-## Estrutura
+## Estrutura do Projeto
 
 ```
-
 SortingAlgorithms/
-├─ big\_o\_compare.py                # script interativo principal
-├─ bogo\_benchmark.py                # benchmark dedicado ao Bogosort
-├─ README.md                         # este arquivo
-└─ LICENSE                           # MIT
+├─ README.md                     # documentação e instruções de uso
+├─ merge-insertion-bubble.py     # script CLI para comparar Merge, Insertion e Bubble Sort
+├─ bogosort.py                   # benchmark e plotagem dedicados ao Bogosort
+└─ (venv/ e .venv/)              # ambientes virtuais
 
 ````
 
