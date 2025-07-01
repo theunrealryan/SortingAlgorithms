@@ -129,7 +129,7 @@ Uma janela se abre mostrando:
 
 | Experimento              | Configuração                          | Insight                                                                   |
 | ------------------------ | ------------------------------------- | ------------------------------------------------------------------------- |
-| **Lista quase ordenada** | `Mín=1, Máx=10` + `tamanhos pequenos` | Perceba *Insertion Sort* em `O(n)` no melhor caso ([en.wikipedia.org][2]) |
+| **Lista quase ordenada** | `Mín=1, Máx=10` + `tamanhos pequenos` | Perceba *Insertion Sort* em `O(n)` no melhor caso                         |
 | **Stress Bubble**        | `tamanhos altos` (≥ 20 000)           | Observe crescimento quadrático tornar-se proibitivo                       |
 | **Bogosort isolado**     | `python bogo_benchmark.py`            | Compare picos individuais (n=10) vs. curva média `n · n!` em escala log   |
 
