@@ -15,7 +15,7 @@ Este repositório foi iniciado como trabalho prático da disciplina **Estatísti
 
 * **Notação Big O** descreve limite assintótico superior de tempo ou espaço.
 * `O(n log n)` surge em algoritmos que dividem dados recursivamente e depois mesclam (caso do Merge Sort).
-* `O(n²)` caracteriza métodos baseados em comparação par-a-par — pivotando ou deslocando itens — em cada passo.
+* `O(n²)` caracteriza métodos baseados em comparação par-a-par, pivotando ou deslocando itens, em cada passo.
 * **Bogosort** exibe complexidade esperada `Θ(n · n!)` porque existem `n!` permutações possíveis e apenas uma está ordenada.
 
 Essas classes são traçadas nos gráficos para evidenciar quão bem (ou mal!) o comportamento empírico segue a teoria.
