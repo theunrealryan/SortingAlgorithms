@@ -1,26 +1,24 @@
-#!/usr/bin/env python3
-"""
-Comparação didática de algoritmos de ordenação em Python,
-mantendo Merge Sort inalterado e exibindo para Insertion e Bubble Sort
-ambas as curvas—empírica e teórica O(n²)—com linhas contínuas.
-"""
-
 import random
 import time
 import statistics
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.ticker as ticker
 
 # --- Geração de dados ---
 def gerar_lista_aleatoria(n, minimo, maximo):
+    """Gera lista de inteiros aleatórios em [minimo, maximo]."""
     return [random.randint(minimo, maximo) for _ in range(n)]
 
-# --- Ordenações ---
+# --- Algoritmos de ordenação ---
 def merge_sort(a):
+    """Merge Sort clássico (O(n·log n))."""
     if len(a) <= 1:
         return a
     m = len(a) // 2
-    return merge(merge_sort(a[:m]), merge_sort(a[m:]))
+    left = merge_sort(a[:m])
+    right = merge_sort(a[m:])
+    return merge(left, right)
 
 def merge(l, r):
     res, i, j = [], 0, 0
@@ -70,59 +68,60 @@ def comparar_algoritmos(algos, tamanhos, minimo, maximo, reps):
         print("  OK")
     return resultados
 
-# --- Plotagem com curvas teóricas contínuas para O(n²) ---
-def plotar_empirico_on2(tamanhos, medidos):
-    """
-    Plota curvas empíricas de Merge, Insertion e Bubble Sort,
-    e para Insertion e Bubble exibe também a curva O(n²)
-    com linha contínua e leve transparência.
-    """
+# --- Plotagem combinada (com ajuste adequado de escalas) ---
+def plotar_combinado(tamanhos, medidos):
     fig, ax = plt.subplots(figsize=(10, 6))
     n = np.array(tamanhos, dtype=float)
 
+    # Estilos para os algoritmos
     estilos = {
-        "Merge Sort":     {"marker": "o", "color": "C0"},
-        "Insertion Sort": {"marker": "s", "color": "C1"},
-        "Bubble Sort":    {"marker": "^", "color": "C2"},
+        "Merge Sort":     {"marker": "o", "linestyle": "-",  "color": "C0", "linewidth": 2},
+        "Insertion Sort": {"marker": "s", "linestyle": "-",  "color": "C1", "linewidth": 2},
+        "Bubble Sort":    {"marker": "^", "linestyle": "-",  "color": "C2", "linewidth": 2},
     }
 
-    # Plot empírico
+    # Plotagem das curvas de tempos empíricos
     for nome, tempos in medidos.items():
         tempos = np.array(tempos, dtype=float)
-        style = estilos[nome]
+        style = estilos.get(nome, {})
         ax.plot(n, tempos,
                 marker=style["marker"],
-                linestyle='-',
+                linestyle=style["linestyle"],
                 color=style["color"],
-                linewidth=2,
+                linewidth=style["linewidth"],
                 label=f"{nome} (empírico)")
 
-    # Plot O(n²) para Insertion e Bubble, contínuo
-    for nome in ("Insertion Sort", "Bubble Sort"):
-        if nome in medidos:
-            tempos = np.array(medidos[nome], dtype=float)
-            # referência teórica y = k * n^2
-            k = tempos[-1] / (n[-1]**2)
-            ref = k * n**2
-            style = estilos[nome]
-            ax.plot(n, ref,
-                    marker=None,
-                    linestyle='-',
-                    color=style["color"],
-                    linewidth=2,
-                    alpha=0.6,
-                    label=f"{nome} (O(n²))")
+    # Funções de complexidade teórica
+    teorica = {
+        "Merge Sort":     lambda n: n * np.log2(n),
+        "Insertion Sort": lambda n: n**2,
+        "Bubble Sort":    lambda n: n**2
+    }
 
+    # Plotando as curvas teóricas (O(n log n) e O(n^2))
+    for nome, f_comp in teorica.items():
+        vals = f_comp(n)
+        scale = np.max(medidos[nome]) / np.max(vals)  # Escala para coincidir com os valores empíricos
+        ax.plot(n, vals * scale, linestyle='--', color=estilos[nome]["color"], label=f"{nome} (teórica)")
+
+    # Configuração do gráfico
     ax.set_xlabel("Tamanho da entrada (n)")
     ax.set_ylabel("Tempo médio de execução (s)")
-    ax.set_title("Desempenho Empírico e O(n²) para Insertion & Bubble Sort")
-    ax.set_yscale('log')
+    ax.set_title("Desempenho Empírico de Algoritmos de Ordenação")
+    
+    # Ajuste da escala logarítmica para evidenciar a diferença entre n^2 e n*log(n)
+    ax.set_yscale('log')  # Escala logarítmica para mostrar diferenças de crescimento
+
     ax.grid(True, which='both', linestyle=':')
-    ax.legend(loc='upper left')
+
+    # Usando FuncFormatter para remover notação científica no eixo Y
+    ax.yaxis.set_major_formatter(ticker.FuncFormatter(lambda x, _: f"{x:.6f}s"))
+    
+    ax.legend()
     plt.tight_layout()
     plt.show()
 
-# --- Interação ---
+# --- Interação com usuário ---
 def solicitar_algoritmos(disponiveis):
     print("Selecione algoritmos (Enter = todos):")
     for chave, (nome, _) in disponiveis.items():
@@ -141,13 +140,16 @@ def solicitar_algoritmos(disponiveis):
 def solicitar_parametros():
     try:
         ts = [int(x) for x in input("Tamanhos (ex: 1000,2000,4000): ").split(',')]
-        if not ts: raise ValueError
+        if not ts:
+            raise ValueError
     except ValueError:
         ts = [1000, 2000, 4000]
     mn = int(input("Valor mínimo dos elementos: "))
     mx = int(input("Valor máximo dos elementos: "))
-    if mn > mx: mn, mx = mx, mn
-    reps = max(1, int(input("Repetições por tamanho: ")))
+    if mn > mx:
+        mn, mx = mx, mn
+    rep = input("Repetições por tamanho [5]: ").strip()
+    reps = int(rep) if rep.isdigit() else 5
     return ts, mn, mx, reps
 
 def main():
@@ -161,11 +163,11 @@ def main():
     print("\n--- Parâmetros da lista ---")
     tamanhos, minimo, maximo, reps = solicitar_parametros()
 
-    print("\n--- Executando medições ---")
+    print(f"\nExecutando {reps} repetições por tamanho...\n")
     resultados = comparar_algoritmos(selecionados, tamanhos, minimo, maximo, reps)
 
-    print("\n--- Gerando gráfico ---")
-    plotar_empirico_on2(tamanhos, resultados)
+    print("\n--- Gerando gráfico combinado ---")
+    plotar_combinado(tamanhos, resultados)
 
 if __name__ == "__main__":
     main()
