@@ -6,7 +6,7 @@ Aqui, você pode comparar algoritmos clássicos como **Merge Sort**, **Insertion
 
 ### Histórico
 - **Origem (2024.1):** Iniciado como trabalho prático da disciplina de *Estatística Aplicada à Informática* na graduação em Engenharia de Software da Universidade do Estado do Pará (UEPA).
-- **Expansão (2025):** Aprimorado para a palestra *“Análise de Complexidade e Algoritmos de Ordenação em Python: Big O na Prática”* no evento **Python Norte**, ganhando novas funcionalidades e uma interface interativa.
+- **Expansão (07/2025):** Aprimorado para a palestra *“Análise de Complexidade e Algoritmos de Ordenação em Python: Big O na Prática”* no evento **Python Norte**, ganhando novas funcionalidades e uma interface interativa.
 
 ---
 
@@ -35,7 +35,7 @@ Este projeto pode ser utilizado de duas maneiras:
 ```
 SortingAlgorithms/
 ├─ README.md                       # Você está aqui!
-├─ big_O_PyNorte.ipynb         # (SUGESTÃO) O notebook interativo completo.
+├─ big_O_PyNorte.ipynb             # O notebook interativo completo.
 ├─ bogosort.py                     # Script CLI dedicado ao Bogo Sort.
 └─ venv/                           # (Opcional) Ambiente virtual.
 ```
