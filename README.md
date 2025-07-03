@@ -17,7 +17,7 @@ Aqui, você pode comparar algoritmos clássicos como **Merge Sort**, **Insertion
 | **Merge Sort** | `O(n log n)` | Divisão e conquista; estável e resiliente em todos os cenários. |
 | **Insertion Sort** | `O(n²)` | `O(n)` no melhor caso. Excelente para dados pequenos ou quase ordenados. |
 | **Bubble Sort** | `O(n²)` | Simples, mas ineficiente. Ótimo para visualizar o crescimento quadrático. |
-| **Bogo Sort** | `O((n+1)!)` | **"Patience Sort"**. Embaralha até acertar. A piada perfeita para ensinar complexidade. |
+| **Bogo Sort** | `O(n.n!)` | **"Patience Sort"**. Embaralha até acertar. A piada perfeita para ensinar complexidade. |
 
 O projeto gera gráficos comparativos que traçam:
 -   📈 **Curvas Empíricas (Linhas Sólidas):** O tempo médio de execução medido na sua máquina.
