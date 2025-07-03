@@ -1,140 +1,131 @@
-# SortingAlgorithms
+## 🎯 Sobre o Projeto
 
-## Desenvolvimento
+Este repositório oferece uma ferramenta didática e interativa para explorar a **complexidade de algoritmos** de forma visual e prática. Ele foi criado para demonstrar como a **Notação Big O** não é apenas teoria, mas uma descrição precisa do desempenho de algoritmos no mundo real.
 
-Este repositório foi iniciado como trabalho prático da disciplina **Estatística Aplicada à Informática** (2º semestre do curso em 2024.1) de Bacharelado em Engenharia de Software — Universidade do Estado do Pará (UEPA). Em 2025 foi expandido e aprimorado para a palestra **“Análise de Complexidade e Algoritmos de Ordenação em Python: Big O na Prática”**, apresentada no evento **Python Norte** (julho/2025), ganhando:
+Aqui, você pode comparar algoritmos clássicos como **Merge Sort**, **Insertion Sort** e **Bubble Sort**, e até mesmo o infame e cômico **Bogo Sort**, para entender o que torna um código eficiente ou desastrosamente lento.
 
-* interface 100 % interativa (CLI) para escolher algoritmos e parâmetros;  
-* coleta de tempos médios com múltiplas repetições;  
-* gráficos empíricos × curvas teóricas ( _O(n log n)_ , _O(n²)_ , _n·n!_ …);  
-* comparativo especiail para o Bogosort de complexidade fatorial.
-
----
-
-## Fundamentos teóricos
-
-* **Notação Big O** descreve limite assintótico superior de tempo ou espaço.
-* `O(n log n)` surge em algoritmos que dividem dados recursivamente e depois mesclam (caso do Merge Sort).
-* `O(n²)` caracteriza métodos baseados em comparação par-a-par, pivotando ou deslocando itens, em cada passo.
-* **Bogosort** exibe complexidade esperada `Θ(n · n!)` porque existem `n!` permutações possíveis e apenas uma está ordenada.
-
-Essas classes são traçadas nos gráficos para evidenciar quão bem (ou mal!) o comportamento empírico segue a teoria.
+### Histórico
+- **Origem (2024.1):** Iniciado como trabalho prático da disciplina de *Estatística Aplicada à Informática* na graduação em Engenharia de Software da Universidade do Estado do Pará (UEPA).
+- **Expansão (2025):** Aprimorado para a palestra *“Análise de Complexidade e Algoritmos de Ordenação em Python: Big O na Prática”* no evento **Python Norte**, ganhando novas funcionalidades e uma interface interativa.
 
 ---
 
-## Sobre o projeto
+## ✨ Funcionalidades Principais
 
-| Algoritmo       | Classe Big O | Observações |
-|-----------------|--------------|-------------|
-| Merge Sort      | `O(n log n)` | estratégia dividir-e-conquistar; estável; bom para arquivos grandes |
-| Insertion Sort  | `O(n²)`      | excelente para listas quase ordenadas e pequeno _n_  |
-| Bubble Sort     | `O(n²)`      | simples, mas um dos mais lentos em caso médio |
-| **Bogosort**    | `Θ(n · n!)`  | embaralha até ordenar; usado apenas para demonstração de “código terrível” |
+| Algoritmo | Complexidade Média | Destaques Didáticos |
+| :--- | :--- | :--- |
+| **Merge Sort** | `O(n log n)` | Divisão e conquista; estável e resiliente em todos os cenários. |
+| **Insertion Sort** | `O(n²)` | `O(n)` no melhor caso. Excelente para dados pequenos ou quase ordenados. |
+| **Bubble Sort** | `O(n²)` | Simples, mas ineficiente. Ótimo para visualizar o crescimento quadrático. |
+| **Bogo Sort** | `O((n+1)!)` | **"Patience Sort"**. Embaralha até acertar. A piada perfeita para ensinar complexidade. |
+
+O projeto gera gráficos comparativos que traçam:
+-   📈 **Curvas Empíricas (Linhas Sólidas):** O tempo médio de execução medido na sua máquina.
+-   📉 **Curvas Teóricas (Linhas Tracejadas):** As curvas da Notação Big O (`n log n`, `n²`, etc.), normalizadas para se alinharem com os dados e facilitarem a comparação visual.
 
 ---
 
-## Estrutura do Projeto
+## 🛠️ Estrutura e Formas de Uso
+
+Este projeto pode ser utilizado de duas maneiras:
+
+1.  **💻 Via Scripts de Linha de Comando (CLI):** Rápido, direto e ideal para testes específicos.
+2.  **🔬 Via Jupyter Notebook (Recomendado para Aprendizado):** Interativo, visual e com explicações passo a passo.
 
 ```
 SortingAlgorithms/
-├─ README.md                     # documentação e instruções de uso
-├─ merge-insertion-bubble.py     # script CLI para comparar Merge, Insertion e Bubble Sort
-├─ bogosort.py                   # benchmark e plotagem dedicados ao Bogosort
-└─ (venv/ e .venv/)              # ambientes virtuais
-
-````
+├─ README.md                       # Você está aqui!
+├─ analysis_notebook.ipynb         # (SUGESTÃO) O notebook interativo completo.
+├─ merge_insertion_bubble.py       # Script CLI para comparar os algoritmos eficientes.
+├─ bogosort.py                     # Script CLI dedicado ao Bogo Sort.
+└─ venv/                           # (Opcional) Ambiente virtual.
+```
 
 ---
 
-## Instalação rápida
+## ⚙️ Instalação e Configuração
 
+**1. Clone o Repositório:**
 ```bash
 git clone https://github.com/theunrealryan/SortingAlgorithms.git
 cd SortingAlgorithms
-python3 -m venv venv && source venv/bin/activate   # opcional
-pip install numpy matplotlib
-````
+```
+
+**2. (Opcional mas recomendado) Crie um Ambiente Virtual:**
+```bash
+python3 -m venv venv
+source venv/bin/activate  # No Windows, use: venv\Scripts\activate
+```
+
+**3. Instale as Dependências:**
+```bash
+pip install numpy matplotlib pandas "ipywidgets>=7.0.0"
+```
+
+**4. (Apenas para Jupyter) Habilite os Widgets:**
+Se você planeja usar o notebook interativo, habilite a extensão:
+```bash
+# Para Jupyter Notebook Clássico
+jupyter nbextension enable --py widgetsnbextension
+
+# Para JupyterLab
+jupyter labextension install @jupyter-widgets/jupyterlab-manager
+```
 
 ---
 
-## Executando **e interagindo** com `merge-insertion-bubble.py`
+## 🚀 Como Executar
 
-### 1. Inicie o script
+### Modo 1: Scripts via Linha de Comando (CLI)
 
+#### Comparando `Merge`, `Insertion` e `Bubble`
+Este script guiará você por um menu interativo:
 ```bash
 python merge-insertion-bubble.py
 ```
+Você será solicitado a:
+1.  **Escolher os algoritmos** (ex: `1,3` ou `Enter` para todos).
+2.  **Definir os tamanhos `n`** (ex: `100, 500, 1000`).
+3.  **Configurar o intervalo dos valores** aleatórios na lista.
+4.  **Informar o número de repetições** para calcular a média.
 
-### 2. Escolha os algoritmos
+O script imprimirá os tempos no terminal e gerará um gráfico ao final.
 
+#### Analisando o `Bogo Sort`
+Este benchmark dedicado é otimizado para não demorar uma eternidade:
+```bash
+python bogosort.py
 ```
-Selecione algoritmos (Enter = todos):
-  1) Merge Sort
-  2) Insertion Sort
-  3) Bubble Sort
-Ex: 1,3 →
-```
+Ele executa dois experimentos: um para mostrar a variação do tempo para `n=8`, e outro para plotar o crescimento explosivo de `n=2` a `n=8`.
 
-* **Enter vazio** roda **todos**.
-* `1,3` roda apenas Merge Sort e Bubble Sort.
+### Modo 2: Jupyter Notebook Interativo (Recomendado)
 
-### 3. Defina os tamanhos de entrada
+O notebook (`analysis_notebook.ipynb`) contém todas as análises, textos explicativos e um **Sandbox Interativo** para você configurar seus próprios experimentos com botões e sliders.
 
-```
-Tamanhos (ex: 1000,5000,10000):
-```
+1.  Inicie o Jupyter:
+    ```bash
+    jupyter notebook
+    ```
+2.  Abra o arquivo `.ipynb`.
+3.  Execute as células para seguir a análise guiada ou pule direto para o **Sandbox** no final.
 
-Digite uma lista de *n*. O script aceita qualquer quantidade de valores inteiros; caso o formato falhe, usa `[1000, 5000, 10000]` como padrão.
-
-### 4. Configure o intervalo de valores
-
-```
-Mínimo elemento: 0
-Máximo elemento: 1000
-```
-
-Esses limites definem `random.randint(min,max)` para gerar cada elemento.
-
-### 5. Informe o número de repetições
-
-```
-Repetições: 5
-```
-
-Cada algoritmo será executado 5 × por tamanho de lista; usamos a média para reduzir variação estatística.
-
-### 6. Acompanhe o terminal
-
-```
-Medindo n = 5000...
-  Merge Sort    : 0.0123 s
-  Bubble Sort   : 1.0345 s
-```
-
-Para cada *n* você recebe o tempo médio já formatado.
-
-### 7. Analise o gráfico (Matplotlib)
-
-Uma janela se abre mostrando:
-
-* **Linhas sólidas** – tempos empíricos por algoritmo.
-* **Linhas tracejadas** – curvas teóricas normalizadas:
-
-  * *Merge Sort* usa `n·log₂n`;
-  * *Insertion* e *Bubble* usam `n²`.
-
-> Os traços coincidem no último ponto para facilitar a leitura comparativa.
-
-### 8. Experimentos sugeridos
-
-| Experimento              | Configuração                          | Insight                                                                   |
-| ------------------------ | ------------------------------------- | ------------------------------------------------------------------------- |
-| **Lista quase ordenada** | `Mín=1, Máx=10` + `tamanhos pequenos` | Perceba *Insertion Sort* em `O(n)` no melhor caso                         |
-| **Stress Bubble**        | `tamanhos altos` (≥ 20 000)           | Observe crescimento quadrático tornar-se proibitivo                       |
-| **Bogosort isolado**     | `python bogo_benchmark.py`            | Compare picos individuais (n=10) vs. curva média `n · n!` em escala log   |
+<div align="center">
+  <img src="https://raw.githubusercontent.com/theunrealryan/SortingAlgorithms/main/docs/sandbox-example.png" alt="Exemplo do Sandbox Interativo" width="700">
+</div>
 
 ---
 
-## Licença
+## 🧪 Experimentos Sugeridos
 
-Código sob **MIT License** — consulte o arquivo [`LICENSE`](LICENSE).
+| Insight a Obter | Como Configurar | O Que Observar |
+| :--- | :--- | :--- |
+| **Ponto de Cruzamento** | Compare `Insertion` vs `Merge` com `n` denso no início: `10, 20, 30... 150`. | `Insertion Sort` é mais rápido para `n` muito pequeno. Observe onde a linha do `Merge Sort` o ultrapassa. |
+| **Melhor Caso do Insertion** | Compare `Insertion` e `Merge` no cenário `Ordenado`. | `Insertion Sort` se comporta como `O(n)` (uma linha reta), superando o `Merge Sort` de forma massiva. |
+| **Resiliência do Merge** | Compare o `Merge Sort` nos cenários `Aleatório`, `Ordenado` e `Invertido`. | Seus tempos de execução serão quase idênticos, provando sua estabilidade `O(n log n)`. |
+| **O Abismo Fatorial** | No script `bogosort.py`, altere o limite superior de `n` de 8 para 9. | Observe o tempo de execução saltar de segundos/minutos para... talvez horas? **Não recomendado!** |
+
+---
+
+## 📜 Licença
+
+Este projeto é distribuído sob a **Licença MIT**. Sinta-se à vontade para usar, modificar e distribuir o código para fins educacionais ou de qualquer outra natureza. Consulte o arquivo [`LICENSE`](LICENSE) para mais detalhes.
