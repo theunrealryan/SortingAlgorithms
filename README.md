@@ -35,8 +35,7 @@ Este projeto pode ser utilizado de duas maneiras:
 ```
 SortingAlgorithms/
 ├─ README.md                       # Você está aqui!
-├─ analysis_notebook.ipynb         # (SUGESTÃO) O notebook interativo completo.
-├─ merge_insertion_bubble.py       # Script CLI para comparar os algoritmos eficientes.
+├─ big_O_PyNorte.ipynb         # (SUGESTÃO) O notebook interativo completo.
 ├─ bogosort.py                     # Script CLI dedicado ao Bogo Sort.
 └─ venv/                           # (Opcional) Ambiente virtual.
 ```
@@ -76,31 +75,9 @@ jupyter labextension install @jupyter-widgets/jupyterlab-manager
 
 ## 🚀 Como Executar
 
-### Modo 1: Scripts via Linha de Comando (CLI)
+### Modo 1: Jupyter Notebook Interativo
 
-#### Comparando `Merge`, `Insertion` e `Bubble`
-Este script guiará você por um menu interativo:
-```bash
-python merge-insertion-bubble.py
-```
-Você será solicitado a:
-1.  **Escolher os algoritmos** (ex: `1,3` ou `Enter` para todos).
-2.  **Definir os tamanhos `n`** (ex: `100, 500, 1000`).
-3.  **Configurar o intervalo dos valores** aleatórios na lista.
-4.  **Informar o número de repetições** para calcular a média.
-
-O script imprimirá os tempos no terminal e gerará um gráfico ao final.
-
-#### Analisando o `Bogo Sort`
-Este benchmark dedicado é otimizado para não demorar uma eternidade:
-```bash
-python bogosort.py
-```
-Ele executa dois experimentos: um para mostrar a variação do tempo para `n=8`, e outro para plotar o crescimento explosivo de `n=2` a `n=8`.
-
-### Modo 2: Jupyter Notebook Interativo (Recomendado)
-
-O notebook (`analysis_notebook.ipynb`) contém todas as análises, textos explicativos e um **Sandbox Interativo** para você configurar seus próprios experimentos com botões e sliders.
+O notebook (`big_O_PyNorte.ipynb`) contém todas as análises, textos explicativos e um **Sandbox Interativo** para você configurar seus próprios experimentos com botões e sliders.
 
 1.  Inicie o Jupyter:
     ```bash
@@ -109,9 +86,15 @@ O notebook (`analysis_notebook.ipynb`) contém todas as análises, textos explic
 2.  Abra o arquivo `.ipynb`.
 3.  Execute as células para seguir a análise guiada ou pule direto para o **Sandbox** no final.
 
-<div align="center">
-  <img src="https://raw.githubusercontent.com/theunrealryan/SortingAlgorithms/main/docs/sandbox-example.png" alt="Exemplo do Sandbox Interativo" width="700">
-</div>
+
+### Modo 2: Script via Linha de Comando (CLI)
+
+#### Analisando o `Bogo Sort`
+Este benchmark dedicado é otimizado para não demorar uma eternidade:
+```bash
+python bogosort.py
+```
+Ele executa dois experimentos: um para mostrar a variação do tempo para `n=8`, e outro para plotar o crescimento explosivo de `n=2` a `n=8`.
 
 ---
 
